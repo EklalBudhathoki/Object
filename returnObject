@@ -1,0 +1,52 @@
+#include<iostream>
+using namespace std;
+
+class weight
+{
+    int kilo,gram;
+public:
+    void getdata();
+    void display();
+    weight sum(weight, weight);
+};
+
+void weight :: getdata()
+{
+    cout << "kg: ";
+    cin >> kilo;
+    cout << "gm: ";
+    cin >> gram;
+}
+void weight :: display()
+{
+    cout << kilo << "kg and " << gram << "gm";
+}
+weight weight :: sum(weight w1, weight w2)
+{
+    weight w;
+    w.gram = w1.gram + w2.gram;
+    w.kilo = w.gram/1000;
+    w.gram = w.gram/1000;
+    w.kilo = w.gram % 1000;
+    w.kilo += w1.kilo+w2.kilo;
+    return w;
+}
+
+int main()
+{
+    weight w1,w2,w3,w4;
+    cout << "Enter weight in kg and gram:" << endl;
+    cout << "Enter weight 1:" << endl;
+    w1.getdata();
+    cout << "Enter weight 2:" << endl;
+    w2.getdata();
+    cout << "Weight 1:";
+    w1.display();
+    cout <<endl << "Weight 2:";
+    w2.display();
+    cout <<endl << "Total weight:";
+    w4 = w3.sum(w1,w2);
+    w4.display();
+
+    return 1;
+}
